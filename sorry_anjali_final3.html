@@ -248,7 +248,7 @@ document.addEventListener('pointerdown', e => sparkles(e.clientX, e.clientY, 5))
 
 /* background song (YouTube embed, or your own audio file) */
 const SONG_ID   = "B6K_5O5fYCQ";
-const SONG_FILE = "";   // optional: e.g. "song.mp3" placed next to this file (use only a file you have rights to)
+const SONG_FILE = "song.mp3";   // optional: e.g. "song.mp3" placed next to this file (use only a file you have rights to)
 let yt, ytReady = false, wantPlay = false, isPlaying = false, audio = null;
 const isFile = location.protocol === 'file:';
 function setBtn(p){ isPlaying = p; $('#musicBtn').textContent = p ? '⏸ Pause song' : '🎵 Play song'; }
