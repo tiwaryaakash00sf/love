@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anjali, this is for you 🧸💗</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{ --pink:#ff8fb1; --pink2:#ffc2d6; --cream:#fff6f0; --rose:#e84a7f; --ink:#6b3a4e; }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%}
+  body{
+    font-family:'Baloo 2',system-ui,sans-serif;color:var(--ink);
+    background:
+      radial-gradient(circle at 20% 15%,#fff 0 3px,transparent 4px) 0 0/60px 60px,
+      linear-gradient(160deg,#ffe3ee 0%,#ffd1e3 45%,#ffe9d6 100%);
+    overflow:hidden;display:flex;align-items:center;justify-content:center;
+  }
+  #bg{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+  .float{position:absolute;bottom:-40px;opacity:.75;animation:rise linear infinite}
+  @keyframes rise{to{transform:translateY(-115vh) rotate(25deg);opacity:0}}
+
+  .card{
+    position:relative;z-index:2;width:min(92vw,430px);max-height:96vh;overflow-y:auto;
+    padding:22px 20px 26px;background:rgba(255,255,255,.82);backdrop-filter:blur(6px);
+    border-radius:38px;text-align:center;
+    box-shadow:0 14px 40px rgba(232,74,127,.28),0 0 0 5px #fff inset,0 0 0 9px var(--pink2) inset;
+  }
+  .screen{display:none}
+  .screen.active{display:block;animation:pop .5s cubic-bezier(.2,1.4,.4,1)}
+  @keyframes pop{from{opacity:0;transform:scale(.88) translateY(14px)}to{opacity:1;transform:none}}
+
+  h1{
+    font-size:1.75rem;line-height:1.2;margin:8px 0 6px;font-weight:800;
+    background:linear-gradient(90deg,#ff6fa0,#b48cff,#ff9a6f);-webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  p{font-size:1.08rem;line-height:1.5}
+  .script{font-family:'Caveat',cursive;font-size:1.65rem;line-height:1.3}
+
+  button{
+    font-family:inherit;font-weight:700;font-size:1.1rem;border:none;cursor:pointer;
+    padding:12px 26px;border-radius:999px;color:#fff;
+    background:linear-gradient(135deg,#ff7aa5,#e84a7f);
+    box-shadow:0 6px 0 #c23a68,0 10px 18px rgba(232,74,127,.35);
+    transition:transform .12s, box-shadow .12s;
+  }
+  button:hover{transform:translateY(-2px) scale(1.03)}
+  button:active{transform:translateY(5px);box-shadow:0 1px 0 #c23a68}
+  button.soft{background:linear-gradient(135deg,#c9b6ff,#9d86f0);box-shadow:0 6px 0 #7b66cc,0 10px 18px rgba(157,134,240,.35)}
+  .pulse{animation:pulse 1.4s ease-in-out infinite}
+  @keyframes pulse{50%{transform:scale(1.07)}}
+
+  .bear{width:185px;height:185px;margin:2px auto 0;display:block;animation:bob 3s ease-in-out infinite;cursor:pointer;overflow:visible;user-select:none}
+  @keyframes bob{50%{transform:translateY(-8px) rotate(-2deg)}}
+  .bear .tear,.bear .happyEyes,.bear .smile,.bear .blushBig{display:none}
+  .bear[data-mood=sad] .tear{display:block;animation:cry 1.6s ease-in infinite}
+  .bear[data-mood=sad] .tear.t2{animation-delay:.8s}
+  @keyframes cry{0%{transform:translateY(0);opacity:0}20%{opacity:1}100%{transform:translateY(34px);opacity:0}}
+  .bear:not([data-mood=sad]) .mouthSad{display:none}
+  .bear[data-mood=hope] .smile,.bear[data-mood=hope] .blushBig{display:block}
+  .bear[data-mood=happy] .happyEyes,.bear[data-mood=happy] .smile,.bear[data-mood=happy] .blushBig{display:block}
+  .bear[data-mood=happy] .eyes{display:none}
+  .bear[data-mood=happy]{animation:dance .6s ease-in-out infinite}
+  @keyframes dance{25%{transform:translateY(-14px) rotate(-5deg)}75%{transform:translateY(-14px) rotate(5deg)}}
+  .bear .eyes{animation:blink 4s infinite;transform-origin:center 92px}
+  @keyframes blink{0%,94%,100%{transform:scaleY(1)}97%{transform:scaleY(.1)}}
+  .bear .bow{transform-origin:46px 28px;animation:wig 2.5s ease-in-out infinite}
+  @keyframes wig{50%{transform:rotate(-8deg)}}
+
+  .bubble{
+    display:inline-block;background:#fff;border:3px solid var(--pink2);border-radius:20px;
+    padding:6px 16px;margin-top:4px;margin-bottom:12px;font-weight:700;position:relative;font-size:1rem;
+  }
+  .bubble:after{content:"";position:absolute;left:50%;bottom:-12px;margin-left:-9px;border:9px solid transparent;border-top-color:var(--pink2);border-bottom:0}
+  .hugs{font-size:.9rem;color:#b0587a;font-weight:700;margin-top:2px}
+
+  .letter{
+    background:var(--cream);border:2px dashed var(--pink);border-radius:22px;
+    padding:16px 14px;margin:12px 0 16px;min-height:160px;display:flex;align-items:center;justify-content:center;
+  }
+  .dots{display:flex;gap:8px;justify-content:center;margin-bottom:6px}
+  .dots i{width:10px;height:10px;border-radius:50%;background:var(--pink2);transition:.3s}
+  .dots i.on{background:var(--rose);transform:scale(1.4)}
+
+  .btns{position:relative;height:130px;margin-top:12px}
+  #yes{position:absolute;left:50%;top:6px;transform:translateX(-50%);transition:font-size .25s,padding .25s;white-space:nowrap}
+  #no{position:absolute;left:50%;top:80px;transform:translateX(-50%);padding:9px 20px;font-size:.95rem;white-space:nowrap}
+  .hint{font-size:.92rem;min-height:1.4em;margin-top:6px;color:#b0587a}
+
+  .promise{list-style:none;text-align:left;margin:12px auto;max-width:310px}
+  .promise li{background:#fff;border-radius:16px;padding:9px 14px;margin:8px 0;box-shadow:0 3px 8px rgba(232,74,127,.15);font-weight:500;animation:pop .5s both}
+  .promise li:nth-child(2){animation-delay:.2s}.promise li:nth-child(3){animation-delay:.4s}
+  .row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:8px}
+  a.btn{display:inline-block;text-decoration:none}
+
+  .confetti{position:fixed;top:-20px;z-index:50;pointer-events:none;animation:fall linear forwards}
+  @keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+  .sparkle{position:fixed;z-index:60;pointer-events:none;font-size:20px;animation:spark .9s ease-out forwards}
+  @keyframes spark{to{transform:translate(var(--dx),var(--dy)) scale(.2);opacity:0}}
+  .music{position:fixed;top:12px;right:12px;z-index:70;padding:8px 14px;font-size:.9rem}
+  #yt{position:fixed;left:0;bottom:0;width:1px;height:1px;opacity:.01;pointer-events:none}
+  .songlink{display:none;position:fixed;bottom:12px;left:50%;transform:translateX(-50%);z-index:70;background:#fff;color:var(--rose);font-weight:700;padding:8px 16px;border-radius:999px;font-size:.9rem;max-width:90vw;text-align:center;box-shadow:0 4px 12px rgba(232,74,127,.3)}
+  /* Madhubani-style zigzag border */
+  .madhu{height:14px;margin:2px 6px 10px;border-radius:8px;background-color:#2a9d4a;
+    background-image:linear-gradient(135deg,#d62828 25%,transparent 25%),linear-gradient(225deg,#d62828 25%,transparent 25%),linear-gradient(315deg,#f7b500 25%,transparent 25%),linear-gradient(45deg,#f7b500 25%,transparent 25%);
+    background-size:14px 14px;background-position:-7px 0,-7px 0,0 0,0 0}
+  .bihar{font-family:'Caveat',cursive;font-size:1.4rem;color:#c2410c;margin-top:6px}
+</style>
+</head>
+<body>
+
+<div id="bg"></div>
+<button class="music soft" id="musicBtn" aria-label="play or pause song">🎵 Play song</button>
+
+<div id="yt"></div>
+<div id="toast" class="songlink"></div>
+
+<main class="card">
+  <div class="madhu"></div>
+
+  <div class="bubble" id="bubble">Ka ho Anjali? Will you listen for a minute? 🥺</div>
+  <svg class="bear" id="bear" data-mood="sad" viewBox="0 0 200 200" aria-label="a little bear">
+    <circle cx="48" cy="46" r="26" fill="#d9a066"/><circle cx="48" cy="46" r="14" fill="#ffc2d6"/>
+    <circle cx="152" cy="46" r="26" fill="#d9a066"/><circle cx="152" cy="46" r="14" fill="#ffc2d6"/>
+    <ellipse cx="100" cy="102" rx="72" ry="66" fill="#e8b27a"/>
+    <ellipse cx="100" cy="124" rx="30" ry="23" fill="#fff0dc"/>
+    <ellipse cx="53" cy="116" rx="13" ry="8" fill="#ff8fb1" opacity=".55"/>
+    <ellipse cx="147" cy="116" rx="13" ry="8" fill="#ff8fb1" opacity=".55"/>
+    <g class="blushBig"><ellipse cx="53" cy="116" rx="16" ry="10" fill="#ff5f95" opacity=".5"/><ellipse cx="147" cy="116" rx="16" ry="10" fill="#ff5f95" opacity=".5"/></g>
+    <g class="eyes">
+      <ellipse cx="70" cy="92" rx="9" ry="11" fill="#3b2230"/><ellipse cx="130" cy="92" rx="9" ry="11" fill="#3b2230"/>
+      <circle cx="73" cy="88" r="3.5" fill="#fff"/><circle cx="133" cy="88" r="3.5" fill="#fff"/>
+    </g>
+    <g class="happyEyes" fill="none" stroke="#3b2230" stroke-width="5" stroke-linecap="round">
+      <path d="M58 96 Q70 80 82 96"/><path d="M118 96 Q130 80 142 96"/>
+    </g>
+    <ellipse cx="100" cy="115" rx="9" ry="6.5" fill="#3b2230"/>
+    <path class="mouthSad" d="M88 138 Q100 128 112 138" fill="none" stroke="#3b2230" stroke-width="4" stroke-linecap="round"/>
+    <path class="smile" d="M86 128 Q100 146 114 128" fill="#ff8fb1" stroke="#3b2230" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <path class="tear" d="M66 108 q-7 12 0 14 q7 -2 0 -14z" fill="#7fd0ff"/>
+    <path class="tear t2" d="M134 108 q-7 12 0 14 q7 -2 0 -14z" fill="#7fd0ff"/>
+    <circle cx="100" cy="66" r="4.5" fill="#d62828"/>
+    <path d="M44 150 Q100 184 156 150 L160 174 Q100 202 40 174 Z" fill="#d62828"/>
+    <path d="M44 162 Q100 196 156 162" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="2 7" stroke-linecap="round"/>
+    <!-- bow -->
+    <g class="bow">
+      <path d="M46 28 L22 14 L22 42 Z" fill="#ff5f95"/><path d="M46 28 L70 14 L70 42 Z" fill="#ff5f95"/>
+      <circle cx="46" cy="28" r="7" fill="#e84a7f"/>
+    </g>
+    <text x="150" y="30" font-size="22">💗</text>
+  </svg>
+  <div class="hugs" id="hugs">tap bear = hug 🤗</div>
+  <br>
+
+  <section class="screen active" id="s1">
+    <h1>Ka haal ba, Anjali? 🌷</h1>
+    <p>I made something small for you.<br>It'll only take a minute 🎀</p>
+    <p class="bihar">for the sweetest girl from Bihar 🌾<br>(Bihar's most dramatic bear sends pranam 🙏)</p>
+    <br>
+    <button id="start" class="pulse">Open 🎁</button>
+    <p class="hint">tap 🎵 at the top corner to play music</p>
+  </section>
+
+  <section class="screen" id="s2">
+    <div class="dots" id="dots"></div>
+    <div class="letter"><p class="script" id="letterText"></p></div>
+    <button id="next">Next 💌</button>
+  </section>
+
+  <section class="screen" id="s3">
+    <h1>So… can we talk? 🥹</h1>
+    <p>Just hear me out, that's all I'm asking 💗</p>
+    <div class="btns">
+      <button id="yes">Yes, ekdum 💖</button>
+      <button id="no" class="soft">No 🙈</button>
+    </div>
+    <p class="hint" id="hint"></p>
+  </section>
+
+  <section class="screen" id="s4">
+    <h1>Jhakaas! 🎉💗</h1>
+    <p class="script">Thank you Anjali, you made my day 🥹</p>
+    <ul class="promise" id="promises"></ul>
+    <div class="row">
+      <a class="btn" id="wa" target="_blank" rel="noopener"><button>Message me 💬</button></a>
+      <a class="btn" id="call"><button class="soft">Call me 📞</button></a>
+    </div>
+  </section>
+  <div class="madhu" style="margin-top:18px"></div>
+</main>
+
+<script>
+/* ============ EDIT THESE ============ */
+const HER_NAME = "Anjali";
+const MY_NAME  = "Your Name";   // <- write your name here
+const PHONE    = "";               // optional: "919876543210" (with country code, no +)
+
+const LETTER = [
+  "Anjali, I know you're upset and hurt, and seeing you like this really breaks my heart 🥺",
+  "Let me say one thing clearly: I have not cheated on you, and I never would. This is a misunderstanding 🌸",
+  "I'm not asking you to just believe me right now. I only want you to hear me out calmly, and I'll listen to everything you have to say too 👂",
+  "Please give me just 5 minutes to explain. Without you everything feels bekaar, even litti-chokha tastes boring 🥺💗"
+];
+
+const PROMISES = [
+  "🧸 I'll tell you the whole truth",
+  "👂 I'll listen without interrupting",
+  "🌷 I'll stay calm and honest with you",
+  "🍲 Litti chokha treat is on me"
+];
+/* ==================================== */
+
+const $ = s => document.querySelector(s);
+const bear = $('#bear'), bubble = $('#bubble');
+
+const bg = $('#bg'), icons = ['💗','💖','🌸','✨','🧸','💕','🎀','🌷','🐟','🦚','🪔','🌻','🌾'];
+for (let i = 0; i < 26; i++) {
+  const s = document.createElement('span');
+  s.className = 'float'; s.textContent = icons[i % icons.length];
+  s.style.left = Math.random()*100 + 'vw';
+  s.style.fontSize = (14 + Math.random()*24) + 'px';
+  s.style.animationDuration = (9 + Math.random()*12) + 's';
+  s.style.animationDelay = (-Math.random()*20) + 's';
+  bg.appendChild(s);
+}
+
+function show(id){
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  $(id).classList.add('active');
+}
+function mood(m, text){ bear.dataset.mood = m; if(text) bubble.textContent = text; }
+
+function sparkles(x, y, n = 8){
+  for (let i = 0; i < n; i++){
+    const s = document.createElement('div');
+    s.className = 'sparkle';
+    s.textContent = ['💖','✨','💕','🌸'][Math.floor(Math.random()*4)];
+    s.style.left = x + 'px'; s.style.top = y + 'px';
+    const a = Math.random()*Math.PI*2, d = 40 + Math.random()*60;
+    s.style.setProperty('--dx', Math.cos(a)*d + 'px');
+    s.style.setProperty('--dy', Math.sin(a)*d + 'px');
+    document.body.appendChild(s);
+    setTimeout(() => s.remove(), 900);
+  }
+}
+document.addEventListener('pointerdown', e => sparkles(e.clientX, e.clientY, 5));
+
+/* background song (YouTube embed, or your own audio file) */
+const SONG_ID   = "B6K_5O5fYCQ";
+const SONG_FILE = "song.mp3";   // optional: e.g. "song.mp3" placed next to this file (use only a file you have rights to)
+let yt, ytReady = false, wantPlay = false, isPlaying = false, audio = null;
+const isFile = location.protocol === 'file:';
+function setBtn(p){ isPlaying = p; $('#musicBtn').textContent = p ? '⏸ Pause song' : '🎵 Play song'; }
+function showToast(msg){
+  const t = $('#toast'); t.textContent = msg; t.style.display = 'block';
+  clearTimeout(showToast.t); showToast.t = setTimeout(() => t.style.display = 'none', 6000);
+}
+if (SONG_FILE) {
+  audio = new Audio(SONG_FILE); audio.loop = true;
+  audio.onplay = () => setBtn(true); audio.onpause = () => setBtn(false);
+  audio.onerror = () => showToast('Could not load the song file 🎵');
+} else {
+  const tag = document.createElement('script');
+  tag.src = 'https://www.youtube.com/iframe_api';
+  document.head.appendChild(tag);
+  window.onYouTubeIframeAPIReady = () => {
+    const vars = { playsinline: 1, controls: 0, loop: 1, playlist: SONG_ID };
+    if (!isFile) vars.origin = location.origin;
+    yt = new YT.Player('yt', {
+      height: '1', width: '1', videoId: SONG_ID, playerVars: vars,
+      events: {
+        onReady: () => { ytReady = true; if (wantPlay) yt.playVideo(); },
+        onStateChange: e => setBtn(e.data === 1),
+        onError: e => {
+          const c = e.data;
+          if (c === 101 || c === 150) showToast('The video owner has turned off embedding for this song 🎵');
+          else if (c === 153 || isFile) showToast('Please open this page from its hosted link, not as a saved file 🎵');
+          else showToast('Song could not play (error ' + c + ') 🎵');
+        }
+      }
+    });
+  };
+}
+function playSong(){
+  if (audio) { audio.play().catch(() => showToast('Tap again to play 🎵')); return; }
+  wantPlay = true; if (ytReady) yt.playVideo();
+}
+$('#musicBtn').onclick = () => {
+  if (audio) { audio.paused ? playSong() : audio.pause(); return; }
+  if (!ytReady) {
+    showToast(isFile ? 'Please open this page from its hosted link, not as a saved file 🎵'
+                     : 'Song is still loading, check your internet and tap again 🎵');
+    wantPlay = true; return;
+  }
+  if (isPlaying) { wantPlay = false; yt.pauseVideo(); } else { playSong(); }
+};
+
+/* hug counter */
+const squeaks = ["Hehe that tickles 🧸","Hug received 🤗","Please forgive me 💗","Aren't I cute? 🥺","Ka haal ba? 🧸", "Arey baap re, gudgudi! 🤭"];
+let hugs = 0;
+bear.onclick = () => {
+  hugs++;
+  bubble.textContent = squeaks[hugs % squeaks.length];
+  $('#hugs').textContent = hugs + (hugs === 1 ? " hug 🤗" : " hugs 🤗");
+  bear.style.animation = 'none'; void bear.offsetWidth; bear.style.animation = '';
+};
+
+$('#start').onclick = () => { show('#s2'); mood('sad', "Please read till the end 🥺"); renderLetter(); };
+
+let page = 0;
+const dots = $('#dots');
+LETTER.forEach(() => dots.appendChild(document.createElement('i')));
+function typeText(el, text){
+  el.textContent = ''; let i = 0;
+  clearInterval(typeText.t);
+  typeText.t = setInterval(() => {
+    el.textContent += text[i++] || '';
+    if(i >= text.length) clearInterval(typeText.t);
+  }, 26);
+}
+function renderLetter(){
+  [...dots.children].forEach((d,i) => d.classList.toggle('on', i === page));
+  typeText($('#letterText'), LETTER[page]);
+  $('#next').textContent = page === LETTER.length-1 ? "I read it 💗" : "Next 💌";
+  if(page === 1) mood('sad', "This part is important 🥹");
+  if(page === 2) mood('hope', "Almost done 🌸");
+  if(page === 3) mood('hope', "Thank you for reading 💗");
+}
+$('#next').onclick = () => {
+  if(page < LETTER.length-1){ page++; renderLetter(); }
+  else { show('#s3'); mood('hope', "Pleaaase say yes 🥹"); }
+};
+
+const yes = $('#yes'), no = $('#no'), hint = $('#hint');
+const noTexts = ["No","Are you sure? 🥺","Arey baap re 😭","Pretty please 🌷","Look at the bear 🧸","He's crying 😭","Just 5 minutes? 🙏","Ee ka kar rahi ho? 😭"];
+let tries = 0, size = 1.1;
+function dodge(e){
+  if(e) e.preventDefault();
+  tries++; size = Math.min(size + .22, 2.4);
+  yes.style.fontSize = size + 'rem';
+  yes.style.padding = (12 + tries*2) + 'px ' + (26 + tries*4) + 'px';
+  no.textContent = noTexts[Math.min(tries, noTexts.length-1)];
+  const box = $('.btns').getBoundingClientRect();
+  const maxX = box.width/2 - 70;
+  no.style.left = (50 + (Math.random()*2-1) * (maxX/box.width*100)) + '%';
+  no.style.top = (60 + Math.random()*55) + 'px';
+  mood('sad', ["Wait… 🥺","Don't go 😢","Please? 🥹"][tries % 3]);
+  hint.textContent = tries > 3 ? "The No button is shy and keeps running away 🙈" : "";
+}
+no.addEventListener('mouseenter', dodge);
+no.addEventListener('touchstart', dodge, {passive:false});
+no.addEventListener('click', dodge);
+
+function confetti(){
+  const cols = ['#ff8fb1','#ffc2d6','#ffd166','#9d86f0','#7fd0ff','#e84a7f'];
+  for(let i=0;i<110;i++){
+    const c = document.createElement('div');
+    c.className = 'confetti';
+    c.style.left = Math.random()*100 + 'vw';
+    c.style.background = cols[i % cols.length];
+    const w = 6 + Math.random()*8;
+    c.style.width = w + 'px'; c.style.height = (w*1.6) + 'px';
+    c.style.borderRadius = Math.random() > .5 ? '50%' : '2px';
+    c.style.animationDuration = (2.2 + Math.random()*2.5) + 's';
+    c.style.animationDelay = Math.random()*.8 + 's';
+    document.body.appendChild(c);
+    setTimeout(() => c.remove(), 6000);
+  }
+}
+yes.onclick = () => {
+  show('#s4'); mood('happy', "She said yes!! 🎉");
+  confetti(); setTimeout(confetti, 900);
+  const ul = $('#promises'); ul.innerHTML = '';
+  PROMISES.forEach(p => { const li = document.createElement('li'); li.textContent = p; ul.appendChild(li); });
+  const msg = encodeURIComponent(`Hey ${HER_NAME}, thank you for giving me a chance 💗 When can we talk? – ${MY_NAME}`);
+  if(PHONE){
+    $('#wa').href = `https://wa.me/${PHONE}?text=${msg}`;
+    $('#call').href = `tel:+${PHONE}`;
+  } else {
+    $('#wa').href = `https://wa.me/?text=${msg}`;
+    $('#call').style.display = 'none';
+  }
+};
+</script>
+</body>
+</html>
